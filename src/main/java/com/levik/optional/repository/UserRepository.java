@@ -4,6 +4,7 @@ import com.levik.optional.exception.UserNotFoundException;
 import com.levik.optional.model.User;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class UserRepository {
@@ -34,5 +35,14 @@ public class UserRepository {
     Optional<User> getFromDB(int id) {
         System.out.println("search in DB with id " + id);
         return Optional.empty();
+    }
+
+    public User findUser(int id) {
+        Optional<User> user = getFromDB(id);
+        if (user.isPresent()) {
+            return user.get();
+        } else {
+            throw new NoSuchElementException();
+        }
     }
 }
