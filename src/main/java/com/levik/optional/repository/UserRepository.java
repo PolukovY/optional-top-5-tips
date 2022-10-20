@@ -15,11 +15,7 @@ public class UserRepository {
     }
 
     public String getUserStatus(int id) {
-        Optional<String> userStatus = Optional.empty(); // query db and get data could be empty
-        String status = UNDEFINED;
-        if (userStatus.isPresent()) {
-            status = userStatus.get();
-        }
-        return status;
+        Optional<String> userStatus = Query.empty(); // query db and get data could be empty
+        return userStatus.orElse(UNDEFINED);
     }
 }
