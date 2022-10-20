@@ -23,7 +23,7 @@ public class UserRepository {
 
     public User getFromCacheOrDb(int id) {
         return getFromCache(id)
-                .orElse(getFromDB(id).orElseThrow(() -> new UserNotFoundException("User with id " + id)));
+                .orElseGet( () -> getFromDB(id).orElseThrow(() -> new UserNotFoundException("User with id " + id)));
     }
 
     Optional<User> getFromCache(int id) {
