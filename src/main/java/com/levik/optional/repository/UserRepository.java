@@ -24,7 +24,7 @@ public class UserRepository {
 
     public User getFromCacheOrDb(int id) {
         return getFromCache(id)
-                .orElseGet( () -> getFromDB(id).orElseThrow(() -> new UserNotFoundException("User with id " + id)));
+                .orElseGet( () -> getFromDB(id).orElseThrow(UserNotFoundException::new));
     }
 
     Optional<User> getFromCache(int id) {
