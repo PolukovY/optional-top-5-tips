@@ -38,11 +38,6 @@ public class UserRepository {
     }
 
     public User findUser(int id) {
-        Optional<User> user = getFromDB(id);
-        if (user.isPresent()) {
-            return user.get();
-        } else {
-            throw new NoSuchElementException();
-        }
+        return getFromDB(id).orElseThrow();
     }
 }
