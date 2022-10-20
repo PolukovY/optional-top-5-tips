@@ -1,7 +1,9 @@
 package com.levik.optional.repository;
 
+import com.levik.optional.exception.UserNotFoundException;
 import com.levik.optional.model.User;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 public class UserRepository {
@@ -17,5 +19,20 @@ public class UserRepository {
     public String getUserStatus(int id) {
         Optional<String> userStatus = Query.empty(); // query db and get data could be empty
         return userStatus.orElse(UNDEFINED);
+    }
+
+    public User getFromCacheOrDb(int id) {
+        return getFromCache(id)
+                .orElse(getFromDB(id).orElseThrow(() -> new UserNotFoundException("User with id " + id)));
+    }
+
+    Optional<User> getFromCache(int id) {
+        System.out.println("search in cache with id " + id);
+        return Optional.of(new User("TechWorldWithYevgen", new ArrayList<>()));
+    }
+
+    Optional<User> getFromDB(int id) {
+        System.out.println("search in DB with id " + id);
+        return Optional.empty();
     }
 }
