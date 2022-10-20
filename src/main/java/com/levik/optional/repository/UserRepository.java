@@ -29,7 +29,7 @@ public class UserRepository {
 
     Optional<User> getFromCache(int id) {
         System.out.println("search in cache with id " + id);
-        return Optional.of(new User("TechWorldWithYevgen", new ArrayList<>()));
+        return Optional.empty();
     }
 
     Optional<User> getFromDB(int id) {

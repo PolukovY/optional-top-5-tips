@@ -6,6 +6,6 @@ public class Main {
 
     public static void main(String[] args) {
         var userRepository = new UserRepository();
-        System.out.println(userRepository.findUser(1));
+        System.out.println(userRepository.getFromCacheOrDb(1));
     }
 }
