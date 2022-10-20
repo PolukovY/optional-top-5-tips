@@ -7,7 +7,7 @@ import java.util.Optional;
 public class UserRepository {
 
     public Optional<User> getUserBad(int id) {
-        Optional<User> user = Query.returnNull();
+        Optional<User> user = Optional.empty();
         //logic query db or external service
         return user;
     }
